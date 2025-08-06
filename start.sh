@@ -4,13 +4,6 @@
 
 echo "启动OpenResty OpenAI API模拟器..."
 
-# 检查OpenResty是否安装
-if ! command -v openresty &> /dev/null; then
-    echo "错误: OpenResty未安装"
-    echo "请先安装OpenResty: https://openresty.org/en/installation.html"
-    exit 1
-fi
-
 # 创建必要的目录
 mkdir -p logs
 mkdir -p temp
