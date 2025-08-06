@@ -11,8 +11,19 @@ if ! command -v openresty &> /dev/null; then
     exit 1
 fi
 
-# 创建日志目录
+# 创建必要的目录
 mkdir -p logs
+mkdir -p temp
+mkdir -p conf
+
+# 测试配置文件
+echo "测试配置文件..."
+openresty -p $(pwd) -c nginx.conf -t
+
+if [ $? -ne 0 ]; then
+    echo "配置文件测试失败，请检查nginx.conf"
+    exit 1
+fi
 
 # 启动OpenResty
 echo "使用配置文件: nginx.conf"
